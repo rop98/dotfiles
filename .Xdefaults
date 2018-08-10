@@ -1,0 +1,71 @@
+*foreground: #4fff00
+*foreground_bold: #a9f2af
+*cursor: #a8a19f
+*background: #000000
+!!*background: rgba(0, 0, 0, .7)
+URxvt*buffered: false
+!! black
+*color0: #1b1918
+*color8: #766e6b
+!! red
+*color1: #f22c40
+*color9: #f22c40
+!! green
+*color2: #0fff5b
+*color10: #1bff2f
+!! yellow
+*color3: #e5ff0e
+*color11: #efff23
+!! blue
+*color4: #4fbee6
+*color12: #0bbbbb
+!! magenta
+*color5: #ff7fff
+*color13: #ff6fff
+!! cyan
+*color6: #0566ff
+*color14: #00eeee
+!! white
+*color7: #effedd
+*color15: #ffffff
+
+Xft.dpi: 100 
+Xft.antialias: true 
+Xft.rgba: rgb 
+Xft.hinting: true 
+Xft.hintstyle: hintslight 
+
+#font settings
+#URxvt.font: xft:Liberation Mono:pixelsize=13:antialias=true:hinting=true
+#URxvt.boldFont: xft:Liberation Mono:bold:pixelsize=13:antialias=true:hinting=true
+
+URxvt.intensityStyles:	false
+URxvt.depth:		16
+URxvt.font: xft:Liberation Mono:pixelsize=13
+URxvt.boldFont: xft:Liberation Mono:bold:pixelsize=13
+URxvt.scrollBar:	false
+URxvt.cursorColor:	white
+URxvt.perl-ext-common:	default,matcher,resize-font,font-size,
+URxvt.perl-lib:		$HOME/.config/Scripts
+URxvt.url-launcher:	/usr/bin/xdg-open
+URxvt.matcher.button:	1
+URxvt.font-size.step: 1
+URxvt.resize-font.step: 1
+URxvt.keysym.C-Up:    perl:font-size:increase
+URxvt.keysym.C-Down:  perl:font-size:decrease
+URxvt.keysym.C-equal: perl:font-size:reset
+URxvt.keysym.C-slash: perl:font-size:show
+
+URxvt.colorUL:		#4682B4
+rofi.color-enabled:	true
+rofi.color-window:	#000, #000, #000
+rofi.color-normal:	#111, #819396, #222, #008ed4, #ffffff
+rofi.color-active:	#002b37, #008ed4, #003643, #008ed4, #66c6ff
+rofi.color-urgent:	#002b37, #da4281, #003643, #008ed4, #890661
+
+rofi.fake-transparency:	true
+rofi.lines:		3
+rofi.bw:		0
+rofi.opacity:		"10"
+rofi.hide-scrollbar:	true
+rofi.width:		30
