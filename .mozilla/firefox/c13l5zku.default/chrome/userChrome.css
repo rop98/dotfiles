@@ -1,0 +1,42 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* #TabsToolbar{margin-left:28vw !important;margin-right:4px;}
+#TabsToolbar,#tabbrowser-tabs{background-color:rgb(50, 50, 52) !important}
+nav-bar{margin-top:-32px !important;margin-right: 70vw!important;}
+PanelUI-button{position: fixed;top:2px;right:144px;}
+.tabbrowser-tab[selected],.tabbrowser-tab:hover{background-color:rgba(255,255,255,0.1)!important}
+
+#titlebar {
+  visibility: collapse;
+}
+#TabsToolbar {
+
+visibility:collapse;
+
+}
+#navigator-toolbox:hover > #TabsToolbar:hover{
+
+visibility: visible !important;
+
+}
+
+#titlebar-buttonbox{height: var(--tab-min-height) !important;}
+#titlebar{ margin-bottom: calc(-2px - var(--tab-min-height) ) !important;}
+*/
+#navigator-toolbox {
+    position: relative;
+    z-index: 1;
+    height: 3px;
+    margin-bottom: -3px;
+    opacity: 0;
+    overflow: hidden;
+}
+#navigator-toolbox:hover {
+    height: auto;
+    margin-bottom: 0px;
+    opacity: 1;
+    overflow: show;
+}
+#content-deck{
+    position:relative;
+    z-index: 0;
+}

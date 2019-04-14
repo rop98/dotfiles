@@ -1,0 +1,19 @@
+[Default Applications]
+x-scheme-handler/tg=telegramdesktop.desktop
+text/html=vivaldi-stable.desktop
+x-scheme-handler/http=vivaldi-stable.desktop
+x-scheme-handler/https=vivaldi-stable.desktop
+x-scheme-handler/about=vivaldi-stable.desktop
+x-scheme-handler/unknown=vivaldi-stable.desktop
+text/plain=gvim.desktop
+video/x-matroska=vlc.desktop;
+video/mp4=vlc.desktop;
+video/webm=vlc.desktop; 
+application/pdf=llpp.desktop
+text/markdown=gvim.desktop
+application/epub+zip=llpp.desktop
+application/epub=llpp.desktop
+
+[Added Associations]
+image/jpeg=sxiv.desktop;feh.desktop;
+inode/directory=pcmanfm.desktop;

@@ -1,0 +1,8 @@
+#!/bin/bash
+video=$(xsel --clipboard)
+if [ $? = 0  ];
+then
+urxvt -e youtube-dl -f "best[height<=480]" --write-sub --write-auto-sub -o "/media/ntfs/Users/Reece/Desktop/Youtube/%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" $video
+else exit 0
+  fi
+  exit 1

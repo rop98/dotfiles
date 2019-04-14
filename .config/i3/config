@@ -1,0 +1,293 @@
+# vim: filetype=i3
+# i3 config file (v4)
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+
+#{{{Terminal,Dmenu
+# start a terminal
+bindsym $mod+Return exec urxvt 
+bindsym $mod+Shift+Return exec urxvt 
+bindsym $mod+Ctrl+Shift+Return exec urxvt -hold -e bash -c "screen -c ~/Documents/scripts/center && bash" 
+# start dmenu 
+bindsym mod1+d exec rofi -show run
+#bindsym mod1+space exec dmenu_run
+bindsym mod1+space exec dmenu_extended_run
+bindsym $mod+d exec urxvt -e bash -c "layout_manager.sh"
+#}}}
+
+bindsym $mod+x exec urxvt -e zsh -c "xrandrdmenu.sh"
+
+# {{{ STARTUP PROGRAMS
+# STARTUP PROGRAMS
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id dropbox
+exec --no-startup-id Telegram_
+# start compton
+exec_always --no-startup-id dbus-launch compton -CG --config ~/.config/compton.conf &
+# wallpaper using feh
+exec_always --no-startup-id feh --bg-scale ~/.config/wall.png
+# set caps key to escape and ctrl 
+exec_always --no-startup-id setxkbmap -option 'caps:ctrl_modifier'
+exec_always --no-startup-id xcape -e 'Caps_Lock=Escape'
+# gamma settings
+exec_always --no-startup-id  xrandr --output LVDS-1 --gamma 0.95:0.85:1
+
+## quick terminal
+for_window [instance="metask"] floating enable;
+for_window [instance="metask"] resize set 625 400
+for_window [instance="metask"] move scratchpad 
+bindsym $mod+v [instance="metask"] scratchpad show; [instance="metask"] move position center
+exec --no-startup-id  urxvt -bg rgba:0000/0000/0000/c800 --depth 32 -name metask -e sh college.sh
+ 
+#Make focused window a scratchpad
+ bindsym $mod+Shift+0 move scratchpad
+#Show or hide next scratchpad and cycle
+ bindsym $mod+0 scratchpad show
+# }}}
+
+# {{{ WINDOW MANAGEMENT,WORKSPACES,SYSTEM
+#WINDOW MANAGEMENT
+# kill focused window
+bindsym $mod+q split toggle
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window 
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# layout splits
+bindsym $mod+slash		split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+Shift+e layout toggle tabbed stacking split 
+bindsym $mod+Shift+w layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+Set $workspace1 "1: "
+Set $workspace2 "2: "
+Set $workspace3 "3: "
+Set $workspace4 "4: "
+Set $workspace5 "5: MATH"
+Set $workspace6 "6: STUDY"
+Set $workspace7 "7: JAVA"
+Set $workspace8 "8: "
+Set $workspace9 "9: "
+Set $workspace0 "0: "
+Set $workspace10 "IM"
+
+bindsym $mod+Ctrl+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+
+# switch to workspace named
+#bindsym $mod+1 workspace number 1
+#bindsym $mod+2 workspace number 2
+#bindsym $mod+3 workspace number 3
+#bindsym $mod+4 workspace number 4
+#bindsym $mod+5 workspace number 5
+#bindsym $mod+6 workspace number 6
+#bindsym $mod+7 workspace number 7
+#bindsym $mod+8 workspace number 8
+#bindsym $mod+9 workspace number 9
+#
+## move focused container to workspace named
+#bindsym $mod+Shift+1 move container to workspace number 1
+#bindsym $mod+Shift+2 move container to workspace number 2
+#bindsym $mod+Shift+3 move container to workspace number 3
+#bindsym $mod+Shift+4 move container to workspace number 4
+#bindsym $mod+Shift+5 move container to workspace number 5
+#bindsym $mod+Shift+6 move container to workspace number 6
+#bindsym $mod+Shift+7 move container to workspace number 7
+#bindsym $mod+Shift+8 move container to workspace number 8
+#bindsym $mod+Shift+9 move container to workspace number 9
+
+## switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3 
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+#bindsym $mod+0 workspace $workspace0
+bindsym $mod+grave workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+grave move container to workspace $workspace10
+
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+l move workspace to output right
+#bindsym $mod+Shift+0 move container to workspace $workspace0
+
+bindsym $Mod+Tab workspace next
+bindsym $Mod+Shift+Tab workspace prev
+
+#quick shrink quick grow
+bindsym $mod+Shift+i		resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+u		resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+y		resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+o		resize grow width 10 px or 10 ppt
+
+
+#gaps settings
+gaps inner 10
+gaps outer 10
+bindsym $mod+t       gaps inner current set 0 ; gaps outer current set 0
+bindsym $mod+Shift+t gaps inner current set 10; gaps outer current set 10
+bindsym $mod+Ctrl+t gaps inner current set 35; gaps outer current set 35
+
+# Hide borders
+for_window [class="^.*"] border pixel 1
+new_window 1pixel
+
+#SYSTEM 
+# reload the configuration file
+bindsym $mod+ctrl+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'exit?.' -b 'Yes, exit i3' 'i3-msg exit'"
+# lock i3
+bindsym $mod+Shift+x exec i3lock
+# }}}
+
+# {{{ COLORS AND STATUS 
+#COLORS AND STATUS
+#set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# # from the generated scheme.
+# # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# # it fails to get colors from Xresources.
+ set_from_resource $fg i3wm.color7 #f0f0f0
+ set_from_resource $bg i3wm.color2 #f0f0f0
+#
+# # class                 border  backgr. text indicator child_border
+ client.focused          $bg     $bg     #000000  #ff0052       $bg
+ client.focused_inactive #8FBC8F $bg     #000000 $fg        #8FBC8F 
+ client.unfocused        #8FBC8F $bg     #555555  $bg       #8FBC8F 
+ client.urgent           $bg     $bg     $fg  $bg       $bg
+ client.placeholder      $bg     $bg     $fg  $bg       $bg
+ client.background       $bg
+
+# is used in the bar {} block below.
+font Inconsolata Nerd Font Complete Mono:mono 7
+
+# Start status bar to display a workspace bar
+bar
+{
+  i3bar_command i3bar -t
+  position top
+  height 20
+  status_command i3blocks
+  mode hide
+  hidden_state hide
+  modifier $mod
+ 
+set $color0 #000030
+set $color1 #fff333
+set $color2 #FF0000
+set $color3 #11111150
+set $color4 #00000050 
+set $color5 #077000 
+
+ 	font pango: Inconsolata Nerd Font Bold 14
+	colors
+	{
+                        #Border #Background	#Text
+		focused_workspace   $color1	 $color1	$color4
+		active_workspace    $color3  $color3  $color3
+		inactive_workspace  $color3  $color3 	$color1
+		urgent_workspace    $color2  $color2  $color0
+		background          $color4
+    	}
+}
+# }}}
+
+
+# {{{ PROGRAM SHORTCUTS
+#program shortcuts
+#
+assign [class="Vivaldi-stable"] $workspace4 
+assign [class="Firefox"] $workspace4 
+assign [class="Telegram"] $workspace10
+bindsym $mod+c exec vivaldi-stable
+bindsym $mod+Shift+c exec firefox
+bindsym $mod+r exec urxvt -e ranger
+bindsym $mod+m exec urxvt -e mocp
+bindsym $mod+ctrl+d exec urxvt -e python3 /home/reece/.config/script/toggle-rotate.py
+bindsym Print exec scrot $HOME/Downloads/pics/screen/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Print exec scrot -u $HOME/Downloads/pics/screen/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+Shift+Print exec scrot -s $HOME/Downloads/pics/screen/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym $mod+ctrl+b   workspace youtube ; exec urxvt -e cd && sh ~/.config/script/ytfull
+bindsym $mod+shift+b  workspace youtube ; exec urxvt -e cd && sh ~/.config/script/ytmed
+bindsym $mod+shift+n  workspace youtube ; exec urxvt -e cd && sh ~/.config/script/ytlow
+bindsym $mod+shift+m  workspace youtube ; exec urxvt -e cd && sh ~/.config/script/ytmusic 
+
+# }}}
+
+# {{{ BRIGHTNESS CONTROLS
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec light -A -b 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U -b 10 # decrease screen brightness
+# Meta key and mouse scroll to change brightness
+bindsym --whole-window $mod+button4 exec light -A -b 10 # increase screen brightness
+bindsym --whole-window $mod+button5 exec light -U -b 10 # decrease screen brightness
+# }}}
+
+#Monitor settings
+exec –no-startup-id xrandr –output VGA1 –right-of LVDS1 –auto
+
+
+
+# {{{ AUDIO AND MEDIA PLAYER 
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume && set-sink-mute 1 0
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume && set-sink-mute 1 0
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Media player controls
+bindsym $mod+plus exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume 
+bindsym $mod+minus exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume 
+bindsym XF86AudioPlay exec --no-startup-id mocp -G 
+bindsym XF86AudioPause exec --no-startup-id mocp -G 
+bindsym XF86AudioNext exec --no-startup-id mocp -f 
+bindsym XF86AudioPrev exec --no-startup-id mocp -r 
+bindsym $mod+p exec --no-startup-id mocp -G
+bindsym $mod+n exec --no-startup-id mocp -f
+bindsym $mod+b exec --no-startup-id mocp -r
+bindsym $mod+bracketleft  exec --no-startup-id mocp -k -10
+bindsym $mod+bracketright exec --no-startup-id mocp -k 10
+bindsym $mod+shift+bracketleft  exec --no-startup-id mocp -k -100
+bindsym $mod+shift+bracketright exec --no-startup-id mocp -k 100
+#}}}
