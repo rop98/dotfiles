@@ -1,0 +1,48 @@
+
+alias vim=nvim
+alias vi=nvim
+alias ytvm='youtube-viewer --no-video'
+alias ytv='youtube-viewer'
+alias battime='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
+alias battery='cd ~/TLPUI && sudo python3 -m tlpui'
+alias i3conf='vim ~/.config/i3/config'
+alias urxvtconf='vim ~/.Xdefaults'
+alias i3blocksconf='vim ~/.i3blocks.conf'
+alias bashrcconf='vim ~/.bashrc'
+alias walll='wal -c -i ~/.config/wall.png'
+alias r='walll && ranger'
+alias cntr='screen -c ~/Documents/scripts/center'
+alias bm='bashmount'
+alias ramme='cd /opt/Ramme && ./ramme'
+alias blueon='sudo systemctl restart bluetooth && pactl load-module module-bluetooth-discover'
+alias desktopftp='sh .config/i3/i3scripts/desktopftp.sh'
+alias tmuxc='tmux new-session "tmux source-file ~/.config/script/college"'
+alias snvim=s'sudo -E nvim '
+alias svim=s'sudo -E vim '
+alias sudoedit='sudo -E nvim '
+#Navigation
+alias 1='cd /media/ntfs/Users/Reece/Desktop/College/FirstYear'
+alias d='cd /media/ntfs/Users/Reece/Desktop'
+alias c='cd /media/ntfs/Users/Reece/Desktop/College'
+alias p='cd "/media/ntfs/Users/Reece/Documents/Visual Studio 2017/Projects"'
+alias dow='cd /media/ntfs/Users/Reece/Downloads'
+alias m='cd /media/ntfs/Users/Reece/Music'
+alias ym='cd /media/ntfs/Users/Reece/Music/Youtube'
+alias yd='cd /media/ntfs/Users/Reece/Desktop/Youtube '
+alias dx='cd ~/Dropbox'
+#Youtubedl
+alias ytdm='youtube-dl -x --audio-format mp3'
+alias ytdv='youtube-dl -f "best[height<720]" --write-sub --write-auto-sub'
+alias yt='yd && ytdv'
+alias ytm='ym && ytdm'
+alias ytp='youtube-dl -citw -f "best[height<720]" --write-sub --write-auto-sub'
+#git
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME/'
+alias ga='git add'
+alias gaa='git add .'
+alias gc='git commit -m'
+alias gs='git status -sb'
+
+alias compresspng='mogrify -filter Triangle -define filter:support=2 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB *.png'
+alias compressjpg='mogrify -strip -interlace Plane -sampling-factor 4:2:0 -quality 85% *.jpg'
+
