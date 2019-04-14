@@ -1,70 +1,46 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
-
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
-
-#esc for vim mode 
 set -o vi
-# append to the history file, don't overwrite it
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
-
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
-
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
-
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 force_color_prompt=yes
-
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
     else
 	color_prompt=
     fi
 fi
-
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -73,33 +49,25 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
-
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
-
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
+# You may want to put all your additions into a separate file like# ~/.bash_aliases, instead of adding them here directly.# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -110,45 +78,11 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export MANPAGER="nvim +set\ filetype=man -"
+export PAGER="nvim +set -"
 PS1="\W-> ";
 #export PATH=$PATH:/home/reece/.javajdk/jdk1.8.0_181/bin
-export PATH=$PATH:'~/.config/script'
-export PATH=$PATH:'~/.vim/bundle/vim-live-latex-preview/bin'
-export PS1;
-alias ytvm='youtube-viewer --no-video'
-alias ytv='youtube-viewer'
-alias battime='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
-alias battery='cd ~/TLPUI && sudo python3 -m tlpui'
-alias i3conf='vim ~/.config/i3/config'
-alias urxvtconf='vim ~/.Xdefaults'
-alias i3blocksconf='vim ~/.i3blocks.conf'
-alias bashrcconf='vim ~/.bashrc'
-alias walll='wal -c -i ~/.config/wall.png'
-alias r='walll && ranger'
-alias cntr='screen -c ~/Documents/scripts/center'
-alias bm='bashmount'
-alias ramme='cd /opt/Ramme && ./ramme'
-alias blueon='sudo systemctl bluetooth restart && pactl load-module module-bluetooth-discover'
-alias desktopftp='sh .config/i3/i3scripts/desktopftp.sh'
-#Navigation
-alias 1='cd /media/ntfs/Users/Reece/Desktop/College/FirstYear'
-alias d='cd /media/ntfs/Users/Reece/Desktop'
-alias c='cd /media/ntfs/Users/Reece/Desktop/College'
-alias p='cd "/media/ntfs/Users/Reece/Documents/Visual Studio 2017/Projects"'
-alias dow='cd /media/ntfs/Users/Reece/Downloads'
-alias m='cd /media/ntfs/Users/Reece/Music'
-alias ym='cd /media/ntfs/Users/Reece/Music/Youtube'
-alias yd='cd /media/ntfs/Users/Reece/Desktop/Youtube '
-#Youtubedl
-alias ytdm='youtube-dl -x --audio-format mp3'
-alias ytdv='youtube-dl -f "best[height<720]" --write-auto-sub'
-alias yt='yd && ytdv'
-alias ytm='ym && ytdm'
-alias ytp='youtube-dl -citw -f "best[height<720]" --write-auto-sub'
-#git
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias ga='git add'
-alias gaa='git add .'
-alias gc='git commit -m'
-alias gs='git status -sb'
-
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export PATH="$HOME/.local/bin:$PATH"
+export VISUAL=nvim
+export EDITOR="$VISUAL"
