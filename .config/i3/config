@@ -241,9 +241,10 @@ set $color5 #077000
 assign [class="Vivaldi-stable"] $workspace4 
 assign [class="Firefox"] $workspace4 
 assign [class="Telegram"] $workspace10
-bindsym $mod+c exec vivaldi-stable
-bindsym $mod+Shift+c exec firefox
+bindsym $mod+c exec firefox
+bindsym $mod+Shift+c exec vivaldi-stable
 bindsym $mod+r exec urxvt -e ranger
+bindsym $mod+e exec pcmanfm
 bindsym $mod+m exec urxvt -e mocp
 bindsym $mod+ctrl+d exec urxvt -e python3 /home/reece/.config/script/toggle-rotate.py
 bindsym Print exec scrot $HOME/Downloads/pics/screen/`date +%Y-%m-%d_%H:%M:%S`.png
