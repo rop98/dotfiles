@@ -78,8 +78,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export MANPAGER="nvim +set\ filetype=man -"
-export PAGER="nvim +set -"
+#export MANPAGER="nvim +set\ filetype=man -"
+#export PAGER="nvim +set -"
+export MANPAGER=w3m
+export PAGER=w3m
 PS1="\W-> ";
 #export PATH=$PATH:/home/reece/.javajdk/jdk1.8.0_181/bin
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

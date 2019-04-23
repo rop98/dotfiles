@@ -1,13 +1,3 @@
-find fon
-find sk
-shell ./palemoon
-qqqqkj
-shell virtualenv
-mkdir ir
-mkdir dropbox
-mkdir django
-mkdir scans
-deletec
 mkdir Documents
 cd 
 mkdir reece
@@ -16,7 +6,6 @@ mkdir ranger
 mkdir nvim
 mkdir 
 mkdir script/vimsnip
-find 
 mkdir pics
 rename screen
 open_with 
@@ -45,6 +34,17 @@ open_with llpp & unbind
 find sma
 find 4
 mkdir scripts
-open_with 1
 shell $ pacman -Qqe > pkglist.txt
+shell nvim dmenu
+touch dmenumount.sh
+touch dmenuUnmount.sh
+open_with mousepad
+find moz
+mkdir working
+open_with 1
+find scr
+mkdir music
+find 
+open_with mpv
 delete
+open_with mpv &&
